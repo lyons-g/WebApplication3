@@ -12,68 +12,24 @@ namespace WebApplication3.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            if(context.Teams.Any())
+            if (context.Games.Any())
             {
                 return;
             }
-            var teams = new Team[]
+            var games = new Game[]
             {
-                new Team { Name = "Moycullen", Address = "Galway"},
-                new Team {Name = "UCD", Address = "Dublin"},
-                new Team {Name = "Star", Address = "Belfast"}
+                new Game { HomeTeam = "Moycullen", AwayTeam = "Maree", HomeScore = 55, AwayScore = 25 },
+                new Game {HomeTeam = "UCD", AwayTeam = "Moycullen", HomeScore = 25, AwayScore = 55},
+                new Game {HomeTeam = "Moycullen", AwayTeam = "Lions", HomeScore = 45, AwayScore = 30 }
             };
-            foreach(Team t in teams)
+            foreach (Game g in games)
             {
-                context.Teams.Add(t);
+                context.Games.Add(g);
             }
             context.SaveChanges();
 
-            var players = new Player[]
-            {
-                new Player
-                {
-                    TeamID = teams.Single(t=>t.Name == "Moycullen").TeamID,
-                    Name = "Patrick Lyons", Number = 4
-                },
 
-                 new Player
-                {
-                    TeamID = teams.Single(t=>t.Name == "Moycullen").TeamID,
-                    Name = "James Lyons", Number = 5
-
-                },
-
-                  new Player
-                {
-                    TeamID = teams.Single(t=>t.Name == "Moycullen").TeamID,
-                    Name = "Laura Lyons", Number = 6
-
-                },
-
-                   new Player
-                {
-                    TeamID = teams.Single(t=>t.Name == "UCD").TeamID,
-                    Name = "Kev Foley", Number = 10
-                },
-
-                    new Player
-                {
-                    TeamID = teams.Single(t=>t.Name == "Star").TeamID,
-                    Name = "Barry Jackson", Number = 11
-
-                }
-            };
-            foreach (Player p in players)
-            {
-                var playersInDataBase = context.Players.Where(
-                    t => t.TeamID == p.PlayerID).SingleOrDefault();
-                if (playersInDataBase == null)
-                {
-                    context.Players.Add(p);
-                }
-            }
-                context.SaveChanges();
-            }
         }
     }
 
+}

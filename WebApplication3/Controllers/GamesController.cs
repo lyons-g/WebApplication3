@@ -22,7 +22,7 @@ namespace WebApplication3.Controllers
         // GET: Games
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Game.ToListAsync());
+            return View(await _context.Games.ToListAsync());
         }
 
         // GET: Games/Details/5
@@ -33,8 +33,8 @@ namespace WebApplication3.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Game
-                .FirstOrDefaultAsync(m => m.GameID == id);
+            var game = await _context.Games
+                .FirstOrDefaultAsync(m => m.GameId == id);
             if (game == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GameID,HomeTeam,HomeScore,AwayTeam,AwayScore,Description")] Game game)
+        public async Task<IActionResult> Create([Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace WebApplication3.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Game.FindAsync(id);
+            var game = await _context.Games.FindAsync(id);
             if (game == null)
             {
                 return NotFound();
@@ -86,9 +86,9 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GameID,HomeTeam,HomeScore,AwayTeam,AwayScore,Description")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points")] Game game)
         {
-            if (id != game.GameID)
+            if (id != game.GameId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace WebApplication3.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameExists(game.GameID))
+                    if (!GameExists(game.GameId))
                     {
                         return NotFound();
                     }
@@ -124,8 +124,8 @@ namespace WebApplication3.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Game
-                .FirstOrDefaultAsync(m => m.GameID == id);
+            var game = await _context.Games
+                .FirstOrDefaultAsync(m => m.GameId == id);
             if (game == null)
             {
                 return NotFound();
@@ -139,15 +139,15 @@ namespace WebApplication3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var game = await _context.Game.FindAsync(id);
-            _context.Game.Remove(game);
+            var game = await _context.Games.FindAsync(id);
+            _context.Games.Remove(game);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool GameExists(int id)
         {
-            return _context.Game.Any(e => e.GameID == id);
+            return _context.Games.Any(e => e.GameId == id);
         }
     }
 }

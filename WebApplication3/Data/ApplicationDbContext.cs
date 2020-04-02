@@ -14,25 +14,20 @@ namespace WebApplication3.Data
         {
         }
 
-        //  public DbSet<Coach> Coaches { get; set; }
-        //   public DbSet<Game> Games { get; set; }
-        // public DbSet<GameStats> GameStats { get; set; }
-        public DbSet<Player> Players { get; set; }
-        public DbSet<Team> Teams { get; set; }
+     
+        public DbSet<Game> Games { get; set; }
+      
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Player>().ToTable("Player");
-            modelBuilder.Entity<Team>().ToTable("Team");
+            modelBuilder.Entity<Game>().ToTable("Game");
+           
         }
 
 
-        public DbSet<WebApplication3.Models.GameStats> GameStats { get; set; }
-
-
-        public DbSet<WebApplication3.Models.Game> Game { get; set; }
+  
 
     }
 

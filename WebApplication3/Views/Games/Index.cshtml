@@ -16,17 +16,21 @@
                 @Html.DisplayNameFor(model => model.HomeTeam)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HomeScore)
+                @Html.DisplayNameFor(model => model.AwayTeam)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AwayTeam)
+                @Html.DisplayNameFor(model => model.Venue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeScore)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AwayScore)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.Win)
             </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -37,21 +41,25 @@
                 @Html.DisplayFor(modelItem => item.HomeTeam)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HomeScore)
+                @Html.DisplayFor(modelItem => item.AwayTeam)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AwayTeam)
+                @Html.DisplayFor(modelItem => item.Venue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeScore)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AwayScore)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Win)
             </td>
+           
             <td>
-                <a asp-action="Edit" asp-route-id="@item.GameID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GameID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GameID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.GameId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.GameId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.GameId">Delete</a>
             </td>
         </tr>
 }
