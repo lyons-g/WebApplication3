@@ -149,5 +149,28 @@ namespace WebApplication3.Controllers
         {
             return _context.Games.Any(e => e.GameId == id);
         }
+
+        public async Task<IActionResult> Trend()
+        {
+            var appDbContext = _context.Games;
+            return View(await appDbContext.ToListAsync());
+        }
+
+        public async Task<JsonResult> Method()
+        {
+            var game = await _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
+
+            var FGA = _context.Games
+                .Select(g => g.FGA).ToArray();
+
+            var FGM = _context.Games
+                .Select(g => g.FGM).ToArray();
+           
+            var FGpc = _context.Games
+                .Select(g => g.FGperC);
+
+            return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, myGame = game });
+
+        }
     }
 }

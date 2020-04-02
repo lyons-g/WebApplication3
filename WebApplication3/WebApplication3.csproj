@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-WebApplication3-CCE88E7E-13A7-4D49-BDFF-C6E9FDB2EBBA</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.4.1" />

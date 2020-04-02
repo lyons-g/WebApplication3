@@ -1,0 +1,106 @@
+﻿@model IEnumerable<WebApplication3.Models.Game>
+
+	@{
+	ViewData["Title"] = "Trend";
+	}
+
+	<h1>Trend</h1>
+
+	<div class="container-fluid">
+		<div class="row">
+			<h3>Field Goals</h3>
+			<canvas id="Graph1">
+			</canvas>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div class="row">
+		<div class="col-md">
+			<canvas id="Graph2">
+			</canvas>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		console.log("HelloWorld");
+	</script>
+
+	<script type="text/javascript">
+
+		function GetJSON_Simple() {
+			var resp2 = [];
+			$.ajax({
+				type: "GET",
+				url: '/Games/Method',
+				async: false,
+				contentType: "application/json",
+				success: function (data) {
+					resp2.push(data);
+				},
+				error: function (req, status, error) {
+					alert("error");
+				}
+
+			});
+			return resp2;
+		}
+
+		var simpleData = GetJSON_Simple();
+		var ctx = document.getElementById("Graph1")
+		var barChartData = {
+			labels: simpleData[0].myGame,
+			datasets: [{
+				data: simpleData[0].myFGpc,
+				label: 'FG%',
+				backgroundColor: 'rgb(255,0,0)'
+
+			},
+				{
+
+					backgroundColor: 'rgb(0,0,255)',
+					label: 'FGA',
+					data: simpleData[0].myFGA
+				},
+				{
+					backgroundColor: 'rgb(255,255,0)',
+					label: 'FGM',
+					data: simpleData[0].myFGM
+
+				}
+			]
+		};
+
+		window.Graph1 = Chart.Bar(ctx, {
+			data: barChartData,
+			options: {
+				title: {
+					display: true,
+					text:'Field Goal'
+				},
+				tooltips: {
+						mode: 'index',
+						intersect: false
+				},
+				responsive: true,
+				scales: {
+					yAxes: [{
+						stacked: true,
+						ticks: {
+							beginAtZero: true
+						},
+					}],
+					xAxes: [{
+							stacked: true,
+						}]
+				}
+			}
+		});
+
+		console.log(simpleData[0].myGame);
+		console.log(simpleData[0].myFGA);
+		console.log(simpleData[0].myFGM);
+		console.log(simpleData[0].myFGpc);
+	</script>
+
+
