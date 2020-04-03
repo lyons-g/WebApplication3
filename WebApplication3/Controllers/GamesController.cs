@@ -153,6 +153,7 @@ namespace WebApplication3.Controllers
         public async Task<IActionResult> Trend()
         {
             var appDbContext = _context.Games;
+
             return View(await appDbContext.ToListAsync());
         }
 
@@ -161,16 +162,20 @@ namespace WebApplication3.Controllers
             var game = await _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
 
             var FGA = _context.Games
-                .Select(g => g.FGA).ToArray();
+                .Select(g => g.FGA);
 
             var FGM = _context.Games
-                .Select(g => g.FGM).ToArray();
+                .Select(g => g.FGM);
            
             var FGpc = _context.Games
                 .Select(g => g.FGperC);
 
+
+
             return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, myGame = game });
 
         }
+       
+     
     }
 }
