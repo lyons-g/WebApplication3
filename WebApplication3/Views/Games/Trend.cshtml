@@ -23,6 +23,12 @@
         </canvas>
     </div>
 </div>
+<div class="row">
+    <div class="col-md">
+        <canvas id="Graph3">
+        </canvas>
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -50,15 +56,38 @@
     var simpleData = GetJSON_Simple();
 
     var ctx = document.getElementById("Graph1")
+
+        console.log(simpleData[0].myWin);
+    var win = simpleData[0].myWin;
+    var myBorderColors = [];
+
+    $.each(win, function( index, value ) {
+        console.log({ value });
+        console.log(value === true);
+        if (value === true) {
+            console.log("im if");
+           myBorderColors[index] = "rgba(0, 177, 106, 1)";
+        } else {
+            console.log("im else");
+            myBorderColors[index] = "rgba(207, 0, 15, 1)";
+        }
+    }); 
+
+   
+
+
+
+    console.log(myBorderColors);
+
     var barChartData = {
         labels: simpleData[0].myGame,
         datasets: [{
 
-            backgroundColor: 'rgb(105,105,105)',
+          backgroundColor: myBorderColors,
             label: 'FGM',
             data: simpleData[0].myFGM
         },
-        {
+       /* {
             backgroundColor: 'rgb(0,139,139)',
             label: 'FGA',
             data: simpleData[0].myFGA
@@ -68,14 +97,64 @@
             data: simpleData[0].myFGpc,
             label: 'FG%',
             backgroundColor: 'rgb(119,136,153)'
+        } */
+        ]
+    };
+
+    var ctx1 = document.getElementById("Graph2")
+    var ctx2 = document.getElementById("Graph3")
+
+
+   Chart.defaults.global.responsive = true;
+    Chart.defaults.global.scale.ticks.beginAtZero = true;
+    Chart.defaults.global.backgroundColor = []
+    Chart.defaults.global.tooltipFillColor = "white";
+    
+  
+ 
+
+    var barData = {
+        labels: simpleData[0].myGame,
+        datasets: [{
+          //  backgroundColor: 'rgb(0,139,139)',
+            label: 'FGA',
+            data: simpleData[0].myFGM
+        }
+        ]
+    };
+
+        var barData2 = {
+        labels: simpleData[0].myGame,
+        datasets: [{
+            //backgroundColor: 'rgb(0,139,139)',
+            label: 'FGA',
+            data: simpleData[0].myFGA
+            
         }
         ]
     };
 
     
+    
     window.onload = function () {
-        window.Graph1 = Chart.Bar(ctx, {
-        data: barChartData,
+        window.Graph3 = Chart.Bar(ctx2, { data: barData2 });
+        window.Graph2 = Chart.Bar(ctx1, { data: barData });
+        window.Graph1 = Chart.Bar(ctx, { data: barChartData });
+ 
+    };
+
+
+    console.log(Chart.defaults);
+
+
+
+    Chart.defaults.scale.ticks.beginAtZero = "true";
+    Chart.defaults.bar.hoverBackgroundColor = "rgba(0,0,139,139)";
+    //Chart.defaults.global.elements.rectangle.borderColor = myBorderColors;
+    Chart.defaults.global.elements.rectangle.borderWidth = 5;
+
+  
+        /*
         options: {
             title: {
                 display: true,
@@ -94,16 +173,21 @@
                     },
                 }],
             
-            }
+            
         }
     });
 
 }
+} */
+
+
+
 
     console.log(simpleData[0].myGame);
     console.log(simpleData[0].myFGA);
     console.log(simpleData[0].myFGM);
     console.log(simpleData[0].myFGpc);
+    console.log(simpleData[0].myWin);
 </script>
 
 

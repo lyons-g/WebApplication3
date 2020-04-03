@@ -170,9 +170,10 @@ namespace WebApplication3.Controllers
             var FGpc = _context.Games
                 .Select(g => g.FGperC);
 
+            var win = _context.Games.Select(g => g.Win);
 
 
-            return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, myGame = game });
+            return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, myGame = game, myWin = win});
 
         }
        
