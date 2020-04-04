@@ -54,7 +54,7 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points")] Game game)
+        public async Task<IActionResult> Create([Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points,Notes")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points,Notes")] Game game)
         {
             if (id != game.GameId)
             {
@@ -161,8 +161,7 @@ namespace WebApplication3.Controllers
         {
             var game = await _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
 
-            var FGA = _context.Games
-                .Select(g => g.FGA);
+            var FGA = await _context.Games.Select(g => g.FGA).Distinct().ToListAsync();
 
             var FGM = _context.Games
                 .Select(g => g.FGM);
@@ -172,8 +171,10 @@ namespace WebApplication3.Controllers
 
             var win = _context.Games.Select(g => g.Win);
 
+            var notes = _context.Games.Select(g => g.Notes);
 
-            return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, myGame = game, myWin = win});
+
+            return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, myGame = game, myWin = win, myNotes = notes});
 
         }
        

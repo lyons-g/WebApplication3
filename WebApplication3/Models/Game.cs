@@ -46,10 +46,10 @@ namespace WebApplication3.Models
         [DisplayName("2P%")]
         public decimal TwoPerC { get; set; }
 
-        [DisplayName("3P")]
+        [DisplayName("3PA")]
         public decimal Three_PA { get; set; }
 
-        [DisplayName("3PM")]
+        [DisplayName("3P")]
         public decimal Three_PM { get; set; }
 
         [DisplayName("3P%")]
@@ -83,6 +83,9 @@ namespace WebApplication3.Models
 
         [DisplayName("PTS")]
         public int Points { get; set; }
+
+
+        public string Notes { get; set; }
 
 
 

@@ -4,6 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
+
+<script src="~/js/site.js"></script>
 <h1>Create</h1>
 
 <h4>Game</h4>
@@ -61,7 +63,7 @@
                 </div>
                 <div class="form-group col">
                     <label asp-for="FGA" class="control-label"></label>
-                    <input asp-for="FGA" class="form-control" />
+                    <input asp-for="FGA" class="form-control" onblur="FGCx()" />
                     <span asp-validation-for="FGA" class="text-danger"></span>
                 </div>
                 <div class="form-group col">
@@ -76,7 +78,7 @@
                 </div>
                 <div class="form-group col">
                     <label asp-for="Two_PA" class="control-label"></label>
-                    <input asp-for="Two_PA" class="form-control" />
+                    <input asp-for="Two_PA" class="form-control" onblur="twoX()" />
                     <span asp-validation-for="Two_PA" class="text-danger"></span>
                 </div>
                 <div class="form-group col">
@@ -86,17 +88,18 @@
                 </div>
 
                 <div class="form-group col">
-                    <label asp-for="Three_PA" class="control-label"></label>
-                    <input asp-for="Three_PA" class="form-control" />
-                    <span asp-validation-for="Three_PA" class="text-danger"></span>
+                    <label asp-for="Three_PM" class="control-label"></label>
+                    <input asp-for="Three_PM" class="form-control" />
+                    <span asp-validation-for="Three_PM" class="text-danger"></span>
+                    
                 </div>
             </div>
 
             <div class=" form-row">
                 <div class="form-group col">
-                    <label asp-for="Three_PM" class="control-label"></label>
-                    <input asp-for="Three_PM" class="form-control" />
-                    <span asp-validation-for="Three_PM" class="text-danger"></span>
+                    <label asp-for="Three_PA" class="control-label"></label>
+                    <input asp-for="Three_PA" class="form-control" onblur="threeX()"/>
+                    <span asp-validation-for="Three_PA" class="text-danger"></span>
                 </div>
 
 
@@ -112,7 +115,7 @@
                 </div>
                 <div class="form-group col">
                     <label asp-for="FTA" class="control-label"></label>
-                    <input asp-for="FTA" class="form-control" />
+                    <input asp-for="FTA" class="form-control" onblur="FTx()"/>
                     <span asp-validation-for="FTA" class="text-danger"></span>
                 </div>
                 <div class="form-group col">
@@ -127,7 +130,7 @@
                 </div>
                 <div class="form-group col">
                     <label asp-for="D_Rb" class="control-label"></label>
-                    <input asp-for="D_Rb" class="form-control" />
+                    <input asp-for="D_Rb" class="form-control" onblur="REBs()"/>
                     <span asp-validation-for="D_Rb" class="text-danger"></span>
                 </div>
             </div>
@@ -168,9 +171,16 @@
             </div>
 
 
+            <div class="form-row">
+                <div form-group>
+                    <label asp-for="Notes" class="control-label"></label>
+                    <input asp-for="Notes" class="form-control" />
+                    <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+            </div>
 
-
-
+            <br />
+            <br />
 
 
             <div class="form-group">
@@ -180,6 +190,7 @@
     </div>
 </div>
 
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
@@ -187,3 +198,5 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
