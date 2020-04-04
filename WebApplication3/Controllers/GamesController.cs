@@ -161,7 +161,8 @@ namespace WebApplication3.Controllers
         {
             var game = await _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
 
-            var FGA = await _context.Games.Select(g => g.FGA).Distinct().ToListAsync();
+            var FGA = _context.Games.
+                Select(g => g.FGA);
 
             var FGM = _context.Games
                 .Select(g => g.FGM);
@@ -173,8 +174,44 @@ namespace WebApplication3.Controllers
 
             var notes = _context.Games.Select(g => g.Notes);
 
+            var Two = _context.Games.Select(g => g.Two_PM);
+            var TwoA = _context.Games.Select(g => g.Two_PA);
+           var TwoPC = _context.Games.Select(g => g.TwoPerC);
 
-            return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, myGame = game, myWin = win, myNotes = notes});
+            var Three = _context.Games.Select(g => g.Three_PM);
+            var ThreeA = _context.Games.Select(g => g.Three_PA);
+            var ThreePC = _context.Games.Select(g => g.Three_PC);
+
+            var FT = _context.Games.Select(g => g.FTM);
+            var FTA = _context.Games.Select(g => g.FTA);
+            var FTpc = _context.Games.Select(g => g.FT_PC);
+
+            var OR = _context.Games.Select(g => g.O_Rb);
+            var DR = _context.Games.Select(g => g.D_Rb);
+            var TR = _context.Games.Select(g => g.Total_Reb);
+
+            var AST = _context.Games.Select(g => g.AST);
+            var TO = _context.Games.Select(g => g.TO);
+            var ST = _context.Games.Select(g => g.Block);
+            var Points = _context.Games.Select(g => g.Points);
+
+
+            return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, 
+                
+                myGame = game, myWin = win, myNotes = notes,
+            
+                myTwo = Two, myTwoA = TwoA, myTwoPC = TwoPC,
+            
+                myThree = Three, myThreeA = ThreeA, myThreePC = ThreePC,
+            
+                myFT = FT, myFTA = FTA, myFTpc = FTpc, 
+            
+                myOR = OR, myDR = DR, myTR = TR,
+
+                myAST = AST, myTO = TO, myST = ST, myPoints = Points
+            
+            
+            });
 
         }
        
