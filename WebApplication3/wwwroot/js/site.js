@@ -147,14 +147,14 @@ var four = {
         label: 'FT',
         data: simpleData[0].myFT
     },
-        {
-            label: 'FTA',
-            data: simpleData[0].myFTA
-        },
-        {
-            label: 'FT%',
-            data: simpleData[0].myFTpc
-        }
+    {
+        label: 'FTA',
+        data: simpleData[0].myFTA
+    },
+    {
+        label: 'FT%',
+        data: simpleData[0].myFTpc
+    }
     ]
 };
 
@@ -228,4 +228,3 @@ window.onload = function () {
     window.Graph8 = Chart.Bar(ctx8, { data: eight });
 
 };
-
