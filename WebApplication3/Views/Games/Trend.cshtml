@@ -2,99 +2,117 @@
 
 @{
     ViewData["Title"] = "Trend";
+    Layout = "~/Views/Shared/_Trend.cshtml";
 }
 
 
-<script src="~/js/site.js"></script>
+<script src="~/js/Trend.js"></script>
 
-
-<h1>Trend</h1>
-<br />
-<br />
-
-<div class="container-fluid">
-    <div class="row">
-        <h3>Field Goals</h3>
-        <canvas id="Graph1">
-        </canvas>
-    </div>
+<div class="jumbotron text-center">
+    <h1>Trend</h1>
 </div>
 <br />
 <br />
 
-<div class="container-fluid">
-    <div class="row">
-        <H3>2 Point Shots</H3>
-        <canvas id="Graph2">
-        </canvas>
+
+
+<div class="row">
+    <div class="col-2 justify-content-center d-none d-md-flex ">
+        <ul class="nav nav-pills flex-column" id="sidebar">
+            <li class="active"><a href="#1">Feild Goals</a></li>
+            <li><a href="#2">2 Point Shots</a></li>
+            <li><a href="#3">3 Point Shots</a></li>
+            <li><a href="#4">Free Throw</a></li>
+            <li><a href="#5">Rebound</a></li>
+            <li><a href="#6">Assit and Turnover</a></li>
+            <li><a href="#7">Steals</a></li>
+            <li><a href="#8">Points</a></li>
+        </ul>
     </div>
-</div>
 
-<br />
-<br />
+    <div class="col-10">
+        <div id="1">
+            <h3>Field Goals</h3>
+            <canvas id="Graph1">
+            </canvas>
+        </div>
+        <br />
+        <br />
 
-<div class="container-fluid">
-    <div class="row">
-        <h3>3 Point Shots</h3>
-        <canvas id="Graph3">
-        </canvas>
+        <div id="2">
+            <H3>2 Point Shots</H3>
+            <canvas id="Graph2">
+            </canvas>
+        </div>
+
+        <br />
+        <br />
+
+        <div id="3">
+
+            <h3>3 Point Shots</h3>
+            <canvas id="Graph3">
+            </canvas>
+        </div>
+
+
+        <br />
+        <br />
+
+        <div id="4">
+
+            <h3>Free Throw</h3>
+            <canvas id="Graph4">
+            </canvas>
+        </div>
+
+
+        <br />
+        <br />
+
+        <div id="5">
+
+            <h3>Rebound</h3>
+            <canvas id="Graph5">
+            </canvas>
+        </div>
+
+
+
+        <br />
+        <br />
+
+        <div id="6">
+
+            <h3>Assist and Turnover</h3>
+            <canvas id="Graph6">
+            </canvas>
+        </div>
+
+
+        <br />
+        <br />
+
+        <div id="7">
+
+            <h3>Steals</h3>
+            <canvas id="Graph7">
+            </canvas>
+        </div>
+
+
+        <br />
+        <br />
+
+        <div id="8">
+
+            <h3>Points</h3>
+            <canvas id="Graph8">
+            </canvas>
+        </div>
+
     </div>
+
 </div>
-
-
 <br />
 <br />
-
-<div class="container-fluid">
-    <div class="row">
-        <h3>Free Throw</h3>
-        <canvas id="Graph4">
-        </canvas>
-    </div>
-</div>
-
-<br />
-<br />
-
-<div class="container-fluid">
-    <div class="row">
-        <h3>Rebound</h3>
-        <canvas id="Graph5">
-        </canvas>
-    </div>
-</div>
-
-
-
-<br />
-<br />
-
-<div class="container-fluid">
-    <div class="row">
-        <h3>Assist and Turnover</h3>
-        <canvas id="Graph6">
-        </canvas>
-    </div>
-</div>
-
-<br />
-<br />
-
-<div class="container-fluid">
-    <div class="row">
-        <h3>Steals</h3>
-        <canvas id="Graph7">
-        </canvas>
-    </div>
-</div>
-
-<br />
-<br />
-
-<div class="container-fluid">
-    <div class="row">
-        <h3>Points</h3>
-        <canvas id="Graph8">
-        </canvas>
-    </div>
-</div>

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md">
+<h1 align="center">Dashboard</h1>
+    </div>
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 my-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Add New Game</h5>
+                    <a asp-area="" asp-controller="Games" asp-action="Create" class="btn btn-primary">Add</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">View All Games</h5>
+                    <a asp-area="" asp-controller="Games" asp-action="Index" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Trend</h5>
+                    <a asp-area="" asp-controller="Games" asp-action="Trend" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

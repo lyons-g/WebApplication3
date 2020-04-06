@@ -5,7 +5,8 @@
 }
 
 <h1>Details</h1>
-
+<div class="container-fluid">
+    <div class="row col-md">
 <table class="table">
     <thead>
         <tr>
@@ -51,11 +52,14 @@
         </tr>
     </thead>
 </table>
+      
 
 <br />
 <br />
 
 <h3> Statistics</h3>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -193,6 +197,9 @@
         </tr>
     </thead>
 </table>
+
+        </div>
+</div>
 
 <div>
     <a asp-action="Edit" asp-route-id="@Model.GameId">Edit</a> |
