@@ -7,199 +7,265 @@
 <h1>Details</h1>
 <div class="container-fluid">
     <div class="row col-md">
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.HomeTeam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AwayTeam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Venue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HomeScore)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AwayScore)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Win)
-            </th>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.HomeTeam)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.AwayTeam)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Venue)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.HomeScore)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.AwayScore)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Win)
-            </td>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HomeTeam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AwayTeam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Venue)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HomeScore)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AwayScore)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Win)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.HomeTeam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.AwayTeam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Venue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.HomeScore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.AwayScore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Win)
+                    </td>
 
-        </tr>
-    </thead>
-</table>
-      
-
-<br />
-<br />
-
-<h3> Statistics</h3>
+                </tr>
+            </thead>
+        </table>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FGM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FGA)
+        <br />
+        <br />
 
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FGperC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Two_PM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Two_PA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TwoPerC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Three_PA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Three_PM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Three_PC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FTM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FTA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FT_PC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.O_Rb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.D_Rb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Total_Reb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AST)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TO)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Steal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Block)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Points)
-            </th>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.FGM)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.FGA)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.FGperC)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Two_PM)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Two_PA)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.TwoPerC)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Three_PA)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Three_PM)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Three_PC)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.FTM)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.FTA)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.FT_PC)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.O_Rb)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.D_Rb)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Total_Reb)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.AST)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.TO)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Steal)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Block)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Points)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Notes)
-            </td>
-        </tr>
-    </thead>
-</table>
+        <h3> Statistics</h3>
 
-        </div>
+
+        <table class="table" id="dataTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FGM)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FGA)
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FGperC)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Two_PM)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Two_PA)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TwoPerC)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Three_PA)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Three_PM)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Three_PC)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FTM)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FTA)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FT_PC)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.O_Rb)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.D_Rb)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Total_Reb)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AST)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Steal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Block)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Points)
+                    </th>
+                </tr>
+                <tr>
+                    <td id="test">
+                        @Html.DisplayFor(model => model.FGM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FGA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FGperC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Two_PM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Two_PA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.TwoPerC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Three_PA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Three_PM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Three_PC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FTM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FTA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FT_PC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.O_Rb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.D_Rb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Total_Reb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.AST)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.TO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Steal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Block)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Points)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Notes)
+                    </td>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
 </div>
+
+
+<h1>Average Comparision</h1>
+
+<button id="renderBtn">
+    View
+</button>
+<div class="col-md">
+    <div>
+        <h3>Feild Goals</h3>
+
+
+        <canvas id="myChart">
+        </canvas>
+    </div>
+</div>
+
+<div class="col-md">
+    <h3>2 Point percentage</h3>
+    <canvas id="myChart"> </canvas>
+</div>
+
+<div class="col-md">
+    <h3>3 Point Percentage</h3>
+    <canvas id="myChart2"> </canvas>
+</div>
+
+
+<div class="col-md">
+    <h3>Free Throw Percentage</h3>
+    <canvas id="myChart3"> </canvas>
+</div>
+
+
+<div class="col-md">
+    <h3>Total Rebounds</h3>
+    <canvas id="myChart4"> </canvas>
+</div>
+
+
+<div class="col-md">
+    <h3>Assists</h3>
+    <canvas id="myChart5"> </canvas>
+</div>
+
+
+<div class="col-md">
+    <h3>Turnovers</h3>
+    <canvas id="myChart6"> </canvas>
+</div>
+
+<div class="col-md">
+    <h3>Steals</h3>
+    <canvas id="myChart7"> </canvas>
+</div>
+
+<div class="col-md">
+    <h3>Blocks</h3>
+    <canvas id="myChart8"> </canvas>
+</div>
+
+<div class="col-md">
+    <h3>Points</h3>
+    <canvas id="myChart9"> </canvas>
+</div>
+
 
 <div>
     <a asp-action="Edit" asp-route-id="@Model.GameId">Edit</a> |

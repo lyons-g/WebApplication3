@@ -19,6 +19,8 @@ function GetJSON_Simple() {
 }
 
 var simpleData = GetJSON_Simple();
+
+
 var ctx = document.getElementById("Graph1")
 var ctx2 = document.getElementById("Graph2")
 var ctx3 = document.getElementById("Graph3")

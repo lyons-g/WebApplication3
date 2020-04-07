@@ -27,23 +27,12 @@ namespace WebApplication3.Controllers
 
 
 
-        // GET: Games/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+      
 
-            var game = await _context.Games
-                .FirstOrDefaultAsync(m => m.GameId == id);
-            if (game == null)
-            {
-                return NotFound();
-            }
 
-            return View(game);
-        }
+
+
+
 
         // GET: Games/Create
         public IActionResult Create()
@@ -216,7 +205,41 @@ namespace WebApplication3.Controllers
             });
 
         }
-       
-     
+
+
+
+
+        // GET: Games/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var game = await _context.Games
+                .FirstOrDefaultAsync(m => m.GameId == id);
+            if (game == null)
+            {
+                return NotFound();
+                
+            }
+            
+            return View(game);
+        }
+
+
+        public async Task<JsonResult> DetailsGraph()
+        {
+
+            var meanFGA = _context.Games.Average(g => g.FGA);
+
+              
+
+            return new JsonResult(new {myMeanFGA = meanFGA });
+        }
+
+
+
     }
 }
