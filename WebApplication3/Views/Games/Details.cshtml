@@ -207,65 +207,102 @@
 <button id="renderBtn">
     View
 </button>
-<div class="col-md">
-    <div>
-        <h3>Feild Goals</h3>
 
 
-        <canvas id="myChart">
-        </canvas>
+
+<div class="row">
+    <div class="col-md-2 justify-content-center d-none d-md-flex ">
+        <ul class="nav nav-pills flex-column" id="sidebar">
+            <li class="active"><a href="#1">Feild Goal %</a></li>
+            <li><a href="#2">2 Point %</a></li>
+            <li><a href="#3">3 Point %</a></li>
+            <li><a href="#4">Free Throw %</a></li>
+            <li><a href="#5">Total Rebounds</a></li>
+            <li><a href="#6">Assist </a></li>
+            <li><a href="#7">Turnover</a></li>
+            <li><a href="#8">Steals</a></li>
+            <li><a href="#9">Blocks</a></li>
+            <li><a href="#10">Points</a></li>
+        </ul>
+    </div>
+
+
+    <div class="col-md-10">
+        <div id="1">
+            <h3>Feild Goal Precentage</h3>
+            <canvas id="myChart">
+            </canvas>
+        </div>
+
+        <br />
+
+        <div id="2">
+            <h3>2 Point Percentage</h3>
+            <canvas id="myChart1"> </canvas>
+        </div>
+
+        <br />
+
+        <div id="3">
+            <h3>3 Point Percentage</h3>
+            <canvas id="myChart2"> </canvas>
+        </div>
+
+
+        <br />
+
+        <div id="4">
+            <h3>Free Throw Percentage</h3>
+            <canvas id="myChart3"> </canvas>
+        </div>
+
+
+        <br />
+
+        <div id="5">
+            <h3>Total Rebounds</h3>
+            <canvas id="myChart4"> </canvas>
+        </div>
+
+
+        <br />
+
+        <div id="6">
+            <h3>Assists</h3>
+            <canvas id="myChart5"> </canvas>
+        </div>
+
+        <br />
+
+
+        <div id="7">
+            <h3>Turnovers</h3>
+            <canvas id="myChart6"> </canvas>
+        </div>
+
+        <br />
+
+        <div id="8">
+            <h3>Steals</h3>
+            <canvas id="myChart7"> </canvas>
+        </div>
+
+        <br />
+
+        <div id="9">
+            <h3>Blocks</h3>
+            <canvas id="myChart8"> </canvas>
+        </div>
+
+        <br />
+
+        <div id="10">
+            <h3>Points</h3>
+            <canvas id="myChart9"> </canvas>
+        </div>
+
     </div>
 </div>
-
-<div class="col-md">
-    <h3>2 Point percentage</h3>
-    <canvas id="myChart"> </canvas>
-</div>
-
-<div class="col-md">
-    <h3>3 Point Percentage</h3>
-    <canvas id="myChart2"> </canvas>
-</div>
-
-
-<div class="col-md">
-    <h3>Free Throw Percentage</h3>
-    <canvas id="myChart3"> </canvas>
-</div>
-
-
-<div class="col-md">
-    <h3>Total Rebounds</h3>
-    <canvas id="myChart4"> </canvas>
-</div>
-
-
-<div class="col-md">
-    <h3>Assists</h3>
-    <canvas id="myChart5"> </canvas>
-</div>
-
-
-<div class="col-md">
-    <h3>Turnovers</h3>
-    <canvas id="myChart6"> </canvas>
-</div>
-
-<div class="col-md">
-    <h3>Steals</h3>
-    <canvas id="myChart7"> </canvas>
-</div>
-
-<div class="col-md">
-    <h3>Blocks</h3>
-    <canvas id="myChart8"> </canvas>
-</div>
-
-<div class="col-md">
-    <h3>Points</h3>
-    <canvas id="myChart9"> </canvas>
-</div>
-
 
 <div>
     <a asp-action="Edit" asp-route-id="@Model.GameId">Edit</a> |

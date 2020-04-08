@@ -232,11 +232,26 @@ namespace WebApplication3.Controllers
         public async Task<JsonResult> DetailsGraph()
         {
 
-            var meanFGA = _context.Games.Average(g => g.FGA);
+            var meanFGA =  _context.Games.Average(g => g.FGperC);
+            var meanTwo = _context.Games.Average(g => g.TwoPerC);
+            var meanThree = _context.Games.Average(g => g.Three_PC);
+            var meanFT = _context.Games.Average(g => g.FT_PC);
+            var meanRBS = _context.Games.Average(g => g.Total_Reb);
+            var meanAst = _context.Games.Average(g => g.AST);
+            var meanTurnover = _context.Games.Average(g => g.TO);
+            var meanSteals = _context.Games.Average(g => g.Steal);
+            var meanBlk = _context.Games.Average(g => g.Block);
+            var meanPoints = _context.Games.Average(g => g.Points);
 
-              
 
-            return new JsonResult(new {myMeanFGA = meanFGA });
+
+            return new JsonResult(new {myMeanFGA = meanFGA,  myTwo = meanTwo, myThree = meanThree, 
+            
+            myFT = meanFT, myRBS = meanRBS, myAST = meanAst, myTO = meanTurnover, mySteals = meanSteals,
+            
+            myBLK = meanBlk, myPTS = meanPoints
+            
+            });
         }
 
 
