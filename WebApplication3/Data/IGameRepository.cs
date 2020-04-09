@@ -6,14 +6,14 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Data
 {
-    public interface IGameRepository : IDisposable
+    public interface IGameRepository 
     {
-        IEnumerable<Game> GetGamesAsync();
-       Task <Game> GetGameByIDAsync(int ? gameId);
-        Task addGame(Game game);
-        Task DeleteGame(int GameId);
-        Task UpdateGame(Game game);
-        Task SaveAsync();
+        Task <List<Game>> GetGames();
+        Task <Game> GetGameByID(int Id);
+        Task <Game> addGame(Game game);
+        Task <Game> DeleteGame(int id);
+        Task <Game> UpdateGame(Game game);
+        
 
     }
 }

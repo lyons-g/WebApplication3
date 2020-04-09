@@ -16,11 +16,11 @@ namespace WebApplication3.Data
             context = _context;
         }
 
-        public IEnumerable<Game> GetGamesAsync()
+        public async Task<List<Game>> GetGames()
         {
-            
-                return context.Games.ToList();
-            
+
+            return await context.Set<Game>().ToListAsync();
+
         }
 
         /*
@@ -31,57 +31,56 @@ namespace WebApplication3.Data
                 */
 
 
-        public async Task<Game> GetGameByIDAsync(int? gameId)
+        public async Task<Game> GetGameByID(int id)
         {
-            return await context.Games.FindAsync(gameId);
-                
-               // FirstOrDefault(g => g.GameId == gameId);
+            return await context.Games.FindAsync(id);
+
+            // FirstOrDefault(g => g.GameId == gameId);
         }
 
-      /*  public async Task<Game> GetGameByID(int? Id)
+        /*  public async Task<Game> GetGameByID(int? Id)
+          {
+              return await context.Games.FindAsync(Id);
+          }
+
+          */
+
+
+        public async Task<Game> addGame(Game game)
         {
-            return await context.Games.FindAsync(Id);
-        }
-
-        */
-
-
-        public async Task addGame (Game game)
-        {
-            context.Games.Add(game);
-           await context.SaveChangesAsync();
-             
-        }
-
- 
-
-        public async Task DeleteGame(int GameID)
-        {
-            Game game = await context.Games.FindAsync(GameID);
-                context.Games.Remove(game);
-        }
-
-
-
-
-
-        public async Task UpdateGame(Game game)
-        {
-             context.Entry(game).State = EntityState.Modified;
-        }
-
-
-
-    
-        
-        public async Task SaveAsync()
-            {
+            context.Set<Game>().Add(game);
             await context.SaveChangesAsync();
+            return game;
+
         }
 
-        public void Dispose()
+
+
+        public async Task<Game> DeleteGame(int id)
         {
-            throw new NotImplementedException();
+            var game = await context.Set<Game>().FindAsync(id);
+            if (game == null)
+            {
+                return game;
+            }
+            context.Set<Game>().Remove(game);
+            await context.SaveChangesAsync();
+            return game;
+
         }
+
+
+
+
+
+        public async Task<Game> UpdateGame(Game game)
+        {
+            context.Entry(game).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return game;
+        }
+
+
+
     }
 }

@@ -33,26 +33,23 @@ namespace WebApplication3.Controllers
               return View(await _context.Games.ToListAsync());
           }*/
 
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult<IEnumerable<Game>>> Index()
         {
-            //missing await
-            return View(gameRepository.GetGamesAsync());
+            
+            return View(await gameRepository.GetGames());
+            
         }
 
 
 
-        public async Task<IActionResult> DetailsAsync(int? Id)
+        public async Task<ActionResult<Game>> Details(int Id)
         {
-            if (Id == null)
-            {
-                return NotFound();
-            }
-            Game game = await gameRepository.GetGameByIDAsync(Id);
-          
+            var game = await gameRepository.GetGameByID(Id);
             if(game == null)
             {
                 return NotFound();
             }
+           
             return View(game);
         }
 
@@ -95,7 +92,6 @@ namespace WebApplication3.Controllers
             if (ModelState.IsValid)
             {
                 await gameRepository.addGame(game);
-                await gameRepository.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(game);
@@ -108,14 +104,10 @@ namespace WebApplication3.Controllers
 
 
         // GET: Games/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<ActionResult<Game>> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            Game game = await gameRepository.GetGameByID(id);
 
-            var game =  gameRepository.GetGameByIDAsync(id);
             if (game == null)
             {
                 return NotFound();
@@ -128,7 +120,7 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points,Notes")] Game game)
+        public async Task<ActionResult<Game>> Edit(int id, [Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points,Notes")] Game game)
         {
             if (id != game.GameId)
             {
@@ -140,7 +132,6 @@ namespace WebApplication3.Controllers
                 try
                 {
                     await gameRepository.UpdateGame(game);
-                    await gameRepository.SaveAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -164,14 +155,10 @@ namespace WebApplication3.Controllers
 
 
         // GET: Games/Delete/5
-        public IActionResult Delete(int? id)
+        public async Task<ActionResult<Game>> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var game = gameRepository.GetGameByIDAsync(id);
+            var game = await gameRepository.GetGameByID(id);
+           
                 
             if (game == null)
             {
@@ -184,11 +171,10 @@ namespace WebApplication3.Controllers
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult<Game>> DeleteConfirmed(int id)
         {
-            var game = gameRepository.GetGameByIDAsync(id);
-            gameRepository.DeleteGame(id);
-            gameRepository.SaveAsync();
+            //var game = gameRepository.GetGameByID(id);
+            await gameRepository.DeleteGame(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -198,22 +184,30 @@ namespace WebApplication3.Controllers
 
         private bool GameExists(int id)
         {
+            var game =  gameRepository.GetGameByID(id);
+            if (game == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            //context.Set<Game>().ToListAsync();
 
-            return gameRepository.GetGamesAsync().Any(e => e.GameId == id);
-           
+                //return gameRepository.GetGames().contains(e => e.GameId == id);
+
         }
         
 
         public IActionResult Trend()
         {
-            var appDbContext = gameRepository.GetGamesAsync();
-
-            return View(appDbContext);
+            return View();
         }
 
         public async Task<JsonResult> Method()
         {
-            var game = gameRepository.GetGamesAsync();
+            var game = await gameRepository.GetGames();
 
          
             // _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
@@ -274,7 +268,7 @@ namespace WebApplication3.Controllers
 
         public async Task<JsonResult> DetailsGraph()
         {
-            var game = gameRepository.GetGamesAsync();
+            var game = await gameRepository.GetGames();
 
             var meanFGA = game.Average(g => g.FGperC);
             var meanTwo = game.Average(g => g.TwoPerC);
