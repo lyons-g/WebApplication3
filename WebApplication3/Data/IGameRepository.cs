@@ -8,12 +8,12 @@ namespace WebApplication3.Data
 {
     public interface IGameRepository : IDisposable
     {
-        IEnumerable<Game> GetGames();
-        Game GetGameByID(int GameId);
-        void addGame(Game game);
-        void DeleteGame(int GameId);
-        void UpdateGame(Game game);
-        void Save();
+        IEnumerable<Game> GetGamesAsync();
+       Task <Game> GetGameByIDAsync(int ? gameId);
+        Task addGame(Game game);
+        Task DeleteGame(int GameId);
+        Task UpdateGame(Game game);
+        Task SaveAsync();
 
     }
 }

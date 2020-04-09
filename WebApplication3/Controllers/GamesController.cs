@@ -12,22 +12,54 @@ namespace WebApplication3.Controllers
 {
     public class GamesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        // private readonly ApplicationDbContext _context;
 
-        public GamesController(ApplicationDbContext context)
+        private IGameRepository gameRepository;
+
+        public GamesController(IGameRepository gameRepository)
         {
-            _context = context;
+            this.gameRepository = gameRepository;
         }
 
-        // GET: Games
+        /*  public GamesController(ApplicationDbContext context)
+          {
+              _context = context;
+          }
+
+
+          // GET: Games
+          public async Task<IActionResult> Index()
+          {
+              return View(await _context.Games.ToListAsync());
+          }*/
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Games.ToListAsync());
+            //missing await
+            return View(gameRepository.GetGamesAsync());
         }
 
 
+
+        public async Task<IActionResult> DetailsAsync(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            Game game = await gameRepository.GetGameByIDAsync(Id);
+          
+            if(game == null)
+            {
+                return NotFound();
+            }
+            return View(game);
+        }
+
+     
+
         // GET: Games/Details/5
-        public async Task<IActionResult> Details(int? id)
+     /*   public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -45,7 +77,7 @@ namespace WebApplication3.Controllers
             return View(game);
         }
 
-
+    */
 
         // GET: Games/Create
         public IActionResult Create()
@@ -62,12 +94,18 @@ namespace WebApplication3.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(game);
-                await _context.SaveChangesAsync();
+                await gameRepository.addGame(game);
+                await gameRepository.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(game);
         }
+
+
+
+
+
+
 
         // GET: Games/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -77,7 +115,7 @@ namespace WebApplication3.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Games.FindAsync(id);
+            var game =  gameRepository.GetGameByIDAsync(id);
             if (game == null)
             {
                 return NotFound();
@@ -101,8 +139,8 @@ namespace WebApplication3.Controllers
             {
                 try
                 {
-                    _context.Update(game);
-                    await _context.SaveChangesAsync();
+                    await gameRepository.UpdateGame(game);
+                    await gameRepository.SaveAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -120,16 +158,21 @@ namespace WebApplication3.Controllers
             return View(game);
         }
 
+
+
+
+
+
         // GET: Games/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var game = await _context.Games
-                .FirstOrDefaultAsync(m => m.GameId == id);
+            var game = gameRepository.GetGameByIDAsync(id);
+                
             if (game == null)
             {
                 return NotFound();
@@ -141,63 +184,71 @@ namespace WebApplication3.Controllers
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var game = await _context.Games.FindAsync(id);
-            _context.Games.Remove(game);
-            await _context.SaveChangesAsync();
+            var game = gameRepository.GetGameByIDAsync(id);
+            gameRepository.DeleteGame(id);
+            gameRepository.SaveAsync();
             return RedirectToAction(nameof(Index));
         }
 
+
+
+
+
         private bool GameExists(int id)
         {
-            return _context.Games.Any(e => e.GameId == id);
+
+            return gameRepository.GetGamesAsync().Any(e => e.GameId == id);
+           
         }
+        
 
-        public async Task<IActionResult> Trend()
+        public IActionResult Trend()
         {
-            var appDbContext = _context.Games;
+            var appDbContext = gameRepository.GetGamesAsync();
 
-            return View(await appDbContext.ToListAsync());
+            return View(appDbContext);
         }
 
         public async Task<JsonResult> Method()
         {
-            var game = await _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
+            var game = gameRepository.GetGamesAsync();
 
-            var FGA = _context.Games.
-                Select(g => g.FGA);
+         
+            // _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
 
-            var FGM = _context.Games
-                .Select(g => g.FGM);
+            var FGA = game.Select(g => g.FGM);
+                
+
+            var FGM = game.Select(g => g.FGM);
            
-            var FGpc = _context.Games
-                .Select(g => g.FGperC);
+            var FGpc = game.Select(g => g.FGperC);
 
-            var win = _context.Games.Select(g => g.Win);
+            var win = game.Select(g => g.Win);
 
-            var notes = _context.Games.Select(g => g.Notes);
+            var notes = game.Select(g => g.Notes);
 
-            var Two = _context.Games.Select(g => g.Two_PM);
-            var TwoA = _context.Games.Select(g => g.Two_PA);
-           var TwoPC = _context.Games.Select(g => g.TwoPerC);
+            var Two = game.Select(g => g.Two_PM);
+            var TwoA = game.Select(g => g.Two_PA);
+           var TwoPC = game.Select(g => g.TwoPerC);
 
-            var Three = _context.Games.Select(g => g.Three_PM);
-            var ThreeA = _context.Games.Select(g => g.Three_PA);
-            var ThreePC = _context.Games.Select(g => g.Three_PC);
+            var Three = game.Select(g => g.Three_PM);
+            var ThreeA = game.Select(g => g.Three_PA);
+            var ThreePC = game.Select(g => g.Three_PC);
 
-            var FT = _context.Games.Select(g => g.FTM);
-            var FTA = _context.Games.Select(g => g.FTA);
-            var FTpc = _context.Games.Select(g => g.FT_PC);
+            var FT = game.Select(g => g.FTM);
+            var FTA = game.Select(g => g.FTA);
+            var FTpc = game.Select(g => g.FT_PC);
 
-            var OR = _context.Games.Select(g => g.O_Rb);
-            var DR = _context.Games.Select(g => g.D_Rb);
-            var TR = _context.Games.Select(g => g.Total_Reb);
+            var OR = game.Select(g => g.O_Rb);
+            var DR = game.Select(g => g.D_Rb);
+            var TR = game.Select(g => g.Total_Reb);
 
-            var AST = _context.Games.Select(g => g.AST);
-            var TO = _context.Games.Select(g => g.TO);
-            var ST = _context.Games.Select(g => g.Block);
-            var Points = _context.Games.Select(g => g.Points);
+            var AST = game.Select(g => g.AST);
+            var TO = game.Select(g => g.TO);
+            var ST = game.Select(g => g.Block);
+            var Points = game.Select(g => g.Points);
 
 
             return new JsonResult(new { myFGA = FGA, myFGM = FGM, myFGpc = FGpc, 
@@ -223,17 +274,18 @@ namespace WebApplication3.Controllers
 
         public async Task<JsonResult> DetailsGraph()
         {
+            var game = gameRepository.GetGamesAsync();
 
-            var meanFGA =  _context.Games.Average(g => g.FGperC);
-            var meanTwo = _context.Games.Average(g => g.TwoPerC);
-            var meanThree = _context.Games.Average(g => g.Three_PC);
-            var meanFT = _context.Games.Average(g => g.FT_PC);
-            var meanRBS = _context.Games.Average(g => g.Total_Reb);
-            var meanAst = _context.Games.Average(g => g.AST);
-            var meanTurnover = _context.Games.Average(g => g.TO);
-            var meanSteals = _context.Games.Average(g => g.Steal);
-            var meanBlk = _context.Games.Average(g => g.Block);
-            var meanPoints = _context.Games.Average(g => g.Points);
+            var meanFGA = game.Average(g => g.FGperC);
+            var meanTwo = game.Average(g => g.TwoPerC);
+            var meanThree = game.Average(g => g.Three_PC);
+            var meanFT = game.Average(g => g.FT_PC);
+            var meanRBS = game.Average(g => g.Total_Reb);
+            var meanAst = game.Average(g => g.AST);
+            var meanTurnover = game.Average(g => g.TO);
+            var meanSteals = game.Average(g => g.Steal);
+            var meanBlk = game.Average(g => g.Block);
+            var meanPoints = game.Average(g => g.Points);
 
 
 

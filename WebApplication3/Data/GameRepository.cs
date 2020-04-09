@@ -7,63 +7,80 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Data
 {
-    public class GameRepository : IGameRepository, IDisposable
+    public class GameRepository : IGameRepository
     {
-        private ApplicationDbContext context;
+        private readonly ApplicationDbContext context;
 
-        public GameRepository(ApplicationDbContext context)
+        public GameRepository(ApplicationDbContext _context)
         {
-            this.context = context;
+            context = _context;
         }
 
-        public IEnumerable<Game> GetGames()
+        public IEnumerable<Game> GetGamesAsync()
         {
-            return context.Games.ToList();
+            
+                return context.Games.ToList();
+            
+        }
+        /*
+                public async Task <IEnumerable<Game>> GetGames()
+                {
+                    return await context.Games.ToListAsync();
+                }
+                */
+
+
+        public async Task<Game> GetGameByIDAsync(int? gameId)
+        {
+            return await context.Games.FindAsync(gameId);
+                
+               // FirstOrDefault(g => g.GameId == gameId);
         }
 
-        public Game GetGameByID(int GameId)
+      /*  public async Task<Game> GetGameByID(int? Id)
         {
-            return context.Games.Find(GameId);
+            return await context.Games.FindAsync(Id);
         }
 
-        public void addGame (Game game)
+        */
+
+
+        public async Task addGame (Game game)
         {
             context.Games.Add(game);
+           await context.SaveChangesAsync();
+             
         }
 
-        public void DeleteGame(int GameID)
+ 
+
+        public async Task DeleteGame(int GameID)
         {
-            Game game = context.Games.Find(GameID);
+            Game game = await context.Games.FindAsync(GameID);
                 context.Games.Remove(game);
         }
 
-        public void UpdateGame(Game game)
+
+
+
+
+        public async Task UpdateGame(Game game)
         {
-            context.Entry(game).State = EntityState.Modified;
+             context.Entry(game).State = EntityState.Modified;
         }
 
-        public void Save()
-            {
-            context.SaveChanges();
-        }
-        private bool disposed = false;
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
+
+    
+        
+        public async Task SaveAsync()
             {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
+            await context.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            throw new NotImplementedException();
         }
     }
 }
