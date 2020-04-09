@@ -22,6 +22,7 @@ namespace WebApplication3.Data
                 return context.Games.ToList();
             
         }
+
         /*
                 public async Task <IEnumerable<Game>> GetGames()
                 {
