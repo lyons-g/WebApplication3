@@ -47,21 +47,19 @@ function REBs() {
 Chart.defaults.scale.ticks.beginAtZero = "true";
 
 function GetJSON_SimpleD() {
-    var resp3 = [];
-    $.ajax({
+    return $.ajax({
         type: "GET",
         url: '/Games/DetailsGraph',
         async: false,
         contentType: "application/json",
         success: function (data) {
-            resp3.push(data);
+            console.log({ data })
+            Data = [data];
         },
         error: function (req, status, error) {
             alert("error");
         }
-
     });
-    return resp3;
 }
 
 
@@ -407,4 +405,5 @@ function getScrollBar() {
 // Not using modules in app. Just for testing
 module.exports = {
     FGCx,
+    GetJSON_SimpleD
   };
