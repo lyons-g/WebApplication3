@@ -44,6 +44,7 @@ namespace WebApplication3.Controllers
 
         public async Task<ActionResult<Game>> Details(int Id)
         {
+            
             var game = await gameRepository.GetGameByID(Id);
             if(game == null)
             {
