@@ -404,3 +404,7 @@ function getScrollBar() {
 
     });
 };
+// Not using modules in app. Just for testing
+module.exports = {
+    FGCx,
+  };
