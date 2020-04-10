@@ -66,7 +66,7 @@ function GetJSON_SimpleD() {
 
 
 var Data = GetJSON_SimpleD();
-
+/*
 console.log(Data[0].myMeanFGA);
 console.log(Data[0].myTwo);
 console.log(Data[0].myThree);
@@ -78,7 +78,7 @@ console.log(Data[0].mySteals);
 console.log(Data[0].myBLK);
 console.log(Data[0].myPTS);
 
-
+*/
 
 
 
