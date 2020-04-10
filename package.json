@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/jestGlobals.js"
+    ]
+  }
+}
