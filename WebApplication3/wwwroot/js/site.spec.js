@@ -27,6 +27,9 @@ describe("testing site.js", () => {
       expectedPercentFielGoals
     );
   });
+
+
+
   describe("GetJSON_SimpleD", () => {
     it("should return data when the response is successful", () => {
       const mockResponse = "My mock chart data";
