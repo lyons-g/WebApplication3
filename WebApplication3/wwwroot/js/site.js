@@ -47,23 +47,27 @@ function REBs() {
 Chart.defaults.scale.ticks.beginAtZero = "true";
 
 function GetJSON_SimpleD() {
-    return $.ajax({
+    var resp3 = [];
+    $.ajax({
         type: "GET",
         url: '/Games/DetailsGraph',
         async: false,
         contentType: "application/json",
         success: function (data) {
-            console.log({ data })
-            Data = [data];
+            resp3.push(data);
         },
         error: function (req, status, error) {
             alert("error");
         }
+
     });
+    return resp3;
 }
 
 
+
 var Data = GetJSON_SimpleD();
+
 /*
 console.log(Data[0].myMeanFGA);
 console.log(Data[0].myTwo);
@@ -76,9 +80,9 @@ console.log(Data[0].mySteals);
 console.log(Data[0].myBLK);
 console.log(Data[0].myPTS);
 
+
+
 */
-
-
 
 
 
@@ -402,8 +406,9 @@ function getScrollBar() {
 
     });
 };
+
 // Not using modules in app. Just for testing
 module.exports = {
     FGCx,
     GetJSON_SimpleD
-  };
+};
