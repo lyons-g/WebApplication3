@@ -65,8 +65,10 @@ function GetJSON_SimpleD() {
 }
 
 
+
 var Data = GetJSON_SimpleD();
 
+/*
 console.log(Data[0].myMeanFGA);
 console.log(Data[0].myTwo);
 console.log(Data[0].myThree);
@@ -80,7 +82,7 @@ console.log(Data[0].myPTS);
 
 
 
-
+*/
 
 
 
@@ -403,4 +405,10 @@ function getScrollBar() {
         });
 
     });
+};
+
+// Not using modules in app. Just for testing
+module.exports = {
+    FGCx,
+    GetJSON_SimpleD
 };

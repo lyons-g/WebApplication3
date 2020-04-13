@@ -66,27 +66,3 @@ namespace StatsNow.UnitTests
 }
 
 
-/*
-        
-     
-
-
-        public MockGameRepository MockGetByIdInvalid()
-        {
-            Setup(x => x.GetGameByID(It.IsAny<int>()))
-                .Throws(new Exception());
-
-            return this;
-        }
-
-        public MockGameRepository VerifyGetByGameID(Times times)
-        {
-            Verify(x => x.GetGameByID(It.IsAny<int>()), times);
-            return this;
-        }
-
-
-
-    }
-}
-*/

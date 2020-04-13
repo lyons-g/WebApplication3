@@ -59,6 +59,11 @@ var barChartData = {
     ]
 };
 
+console.log("anseo");
+console.log(simpleData[0].myNotes);
+console.log(simpleData[0].myTwoA);
+console.log(simpleData[0].myTwoPC);
+console.log(simpleData[0].myTwo);
 
 
 var two = {

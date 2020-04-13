@@ -14,7 +14,7 @@ namespace WebApplication3.Controllers
     {
         // private readonly ApplicationDbContext _context;
 
-        private IGameRepository gameRepository;
+        private readonly IGameRepository gameRepository;
 
         public GamesController(IGameRepository gameRepository)
         {
@@ -84,11 +84,10 @@ namespace WebApplication3.Controllers
         }
 
         // POST: Games/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points,Notes")] Game game)
+        public async Task<IActionResult> Create(
+            [Bind("GameId,HomeTeam,AwayTeam,Venue,HomeScore,AwayScore,Win,FGA,FGM,FGperC,Two_PM,Two_PA,TwoPerC,Three_PA,Three_PM,Three_PC,FTM,FTA,FT_PC,O_Rb,D_Rb,Total_Reb,AST,TO,Steal,Block,Points,Notes")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +99,8 @@ namespace WebApplication3.Controllers
 
 
 
-
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 
 
 
@@ -209,9 +209,6 @@ namespace WebApplication3.Controllers
         public async Task<JsonResult> Method()
         {
             var game = await gameRepository.GetGames();
-
-         
-            // _context.Games.Select(g => g.GameId).Distinct().ToListAsync();
 
             var FGA = game.Select(g => g.FGM);
                 
