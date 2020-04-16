@@ -140,10 +140,14 @@ function renderChart1(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data1
+                label: '2%',
+                data: data1,
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myTwo]
+                data: [Data[0].myTwo],
+                label: 'Average 2%',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -168,10 +172,14 @@ function renderChart2(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data2
+                data: data2,
+                label: '3%',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myThree]
+                data: [Data[0].myThree],
+                label: 'Average 3%',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -196,10 +204,14 @@ function renderChart3(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data3
+                data: data3,
+                label: 'FT%',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myFT]
+                data: [Data[0].myFT],
+                label: 'Average FT',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -225,10 +237,14 @@ function renderChart4(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data4
+                data: data4,
+                label: 'TotalRbs',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myRBS]
+                data: [Data[0].myRBS],
+                label: 'Average Total Rbs',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -252,10 +268,14 @@ function renderChart5(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data5
+                data: data5,
+                label: 'Assists',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myAST]
+                data: [Data[0].myAST],
+                label: 'Average Assist',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -280,10 +300,14 @@ function renderChart6(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data6
+                data: data6,
+                label: 'Turnover',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myTO]
+                data: [Data[0].myTO],
+                label: 'Average Turnover',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -307,10 +331,14 @@ function renderChart7(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data7
+                data: data7,
+                label: 'Steals',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].mySteals]
+                data: [Data[0].mySteals],
+                label: 'Average Steals',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -335,10 +363,14 @@ function renderChart8(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data8
+                data: data8,
+                label: 'Blocks',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myBLK]
+                data: [Data[0].myBLK],
+                label: 'Average Block',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }
@@ -362,10 +394,14 @@ function renderChart9(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data9
+                data: data9,
+                label: 'Points',
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myPTS]
+                data: [Data[0].myPTS],
+                label: 'Average Points',
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         }

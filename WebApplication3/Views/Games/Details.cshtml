@@ -3,8 +3,11 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="jumbotron text-center">
 
 <h1>Details</h1>
+    </div>
+
 <div class="container-fluid">
     <div class="row col-md">
         <table class="table">
@@ -187,17 +190,12 @@
                         @Html.DisplayFor(model => model.Points)
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayNameFor(model => model.Notes)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Notes)
-                    </td>
-                </tr>
             </thead>
         </table>
-
+        <div>
+            <p>@Html.DisplayNameFor(model => model.Notes)</p>
+            <p> @Html.DisplayFor(model => model.Notes)</p>
+        </div>
     </div>
 </div>
 
@@ -214,7 +212,7 @@
     <div class="col-md-2 justify-content-center d-none d-md-flex ">
         <ul class="nav nav-pills flex-column" id="sidebar">
             <li class="active"><a href="#1">Feild Goal %</a></li>
-            <li><a href="#2">2 Point %</a></li>
+            <li><a href="#2" >2 Point %</a></li>
             <li><a href="#3">3 Point %</a></li>
             <li><a href="#4">Free Throw %</a></li>
             <li><a href="#5">Total Rebounds</a></li>
@@ -306,5 +304,6 @@
 
 <div>
     <a asp-action="Edit" asp-route-id="@Model.GameId">Edit</a> |
+    <a asp-controller="Home" asp-action="Dashboard">Back to Dashboard</a>|
     <a asp-action="Index">Back to List</a>
 </div>

@@ -6,7 +6,10 @@
 
 
 <script src="~/js/site.js"></script>
-<h1>Create</h1>
+
+<div class="jumbotron text-center">
+    <h1>Create</h1>
+</div>
 
 <h4>Game</h4>
 <hr />
@@ -184,7 +187,7 @@
 
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-dark" />
             </div>
         </form>
     </div>
@@ -192,7 +195,7 @@
 
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Home" asp-action="Dashboard">Back to Dashboard</a>
 </div>
 
 @section Scripts {
