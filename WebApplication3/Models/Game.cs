@@ -17,7 +17,6 @@ namespace WebApplication3.Models
         [DisplayName("Away")]
         public string AwayTeam { get; set; }
 
-        
         public string Venue { get; set; }
 
         [DisplayName("Home Score")]
@@ -84,10 +83,7 @@ namespace WebApplication3.Models
         [DisplayName("PTS")]
         public int Points { get; set; }
 
-
         public string Notes { get; set; }
-
-
 
     }
 }

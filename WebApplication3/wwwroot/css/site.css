@@ -81,13 +81,14 @@ header {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    background-color: #bee7ea;
+   /* margin-bottom: 60px;*/
+    background-color: #E5E7E9; 
     width: 100%;
     height: 100%;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    padding-bottom: 60px;
 }
 
 
@@ -120,11 +121,11 @@ body {
 
 
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+    height: 60px; 
     background-color: #0a0a0a;
     
 }

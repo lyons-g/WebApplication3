@@ -45,6 +45,9 @@ function REBs() {
 
 //Details page
 Chart.defaults.scale.ticks.beginAtZero = "true";
+Chart.defaults.global.elements.rectangle.borderWidth = 2;
+Chart.defaults.global.responsive = true;
+Chart.defaults.global.layout.padding.right = 75;
 
 function GetJSON_SimpleD() {
     var resp3 = [];
@@ -104,10 +107,14 @@ function renderChart(data, labels) {
         data: {
             labels: labels,
             datasets: [{
-                data: data
+                label: 'FG%',
+                data: data,
+                backgroundColor: 'rgb(255, 0, 0)'
             },
             {
-                data: [Data[0].myMeanFGA]
+                label: 'Average FG%',
+                data: [Data[0].myMeanFGA],
+                backgroundColor: 'rgb(0,0,255)'
             }
             ]
         },
